@@ -16,10 +16,6 @@ def init(e1=50,e2=10,e3=2,e4=5):
 
     social_distance = e4
 
-    main()
-
-
-
 def initialize_board(num_people):
     # calculate initial positions of people
     init_pos = 500*np.random.rand(num_people,2) # x,y positions of num_people people in 500x500 grid
@@ -68,32 +64,4 @@ def draw_dots(pos,infected,screen):
         pygame.draw.circle(screen,color,(int(pos[i,0]),int(pos[i,1])),marker_size)
     
     pygame.display.update()
-
-
-
-##### Now we need to wrap those functions in a pygame window
-pygame.init()
-
-
-def main():
-
-
-    background_colour = (255,255,255) # white
-    (width, height) = (500,500)
-
-    screen = pygame.display.set_mode((width, height))
-    pygame.display.set_caption('Pandemic Simulator')
-    screen.fill(background_colour)
-
-    pos, infected = initialize_board(num_people)
-    running = True
-    while running:
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                running = False
-
-        pos = random_walk_step(pos,speed,infected)
-        screen.fill((255,255,255))
-        draw_dots(pos,infected,screen)
-        pygame.time.wait(10)
 
