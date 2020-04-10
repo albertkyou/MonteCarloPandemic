@@ -6,14 +6,13 @@ import matplotlib.pyplot as plt
 # Create a Monte Carlo simulation of random walk.
 
 
-def init(e1=50,e2=10,e3=2,e4=5):
+def init(e1=50,e2=10,e3=2):
 
-    global num_people,speed,r0,social_distance
+    global num_people,speed,r0
 
     num_people = e1
     r0 = e2
     speed = e3
-    social_distance = e4
 
     main()
 
@@ -35,22 +34,21 @@ def random_walk_step(init_pos, speed ,infected):
             pos[i,0] = init_pos[i,0]
         if pos[i,1] < 0 or pos[i,1] > 500:
             pos[i,1] = init_pos[i,1]
-        if near_infected(infected,pos,pos[i,:],social_distance,r0) and (i not in infected):
+        if near_infected(infected,pos,pos[i,:],r0) and (i not in infected):
             infected.append(i)
 
     
 
     return pos
 
-def near_infected(infected,pos,person, social_distance, r0):
+def near_infected(infected,pos,person, r0):
     # calculate distance between person and all infected individuals
     for individual in infected:
         infected_individual_position = pos[individual,:]
 
         distance = np.sqrt((person[0]-infected_individual_position[0])**2+(person[1]-infected_individual_position[1])**2)
-        if distance < social_distance:
-            if r0*np.random.rand()>1:
-                return True
+        if r0*(1/distance)*np.random.rand()>1:
+            return True
     
     return False
 
