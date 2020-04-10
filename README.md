@@ -8,7 +8,7 @@ The base model shows how individuals undergoing random walk might contract a dis
 The parameters can be edited to see how various measures affect infection rate.
 
 ### Editable parameters:
-- Population density
-- Individual locality (i.e. how far do people walk)
-- R naught
-- Death rate
+- Population density (done)
+- Individual locality (i.e. how far do people walk) (done)
+- R naught (done)
+- Death rate (in progress)
