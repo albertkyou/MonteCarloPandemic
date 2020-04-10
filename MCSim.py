@@ -8,12 +8,11 @@ import matplotlib.pyplot as plt
 
 def init(e1=50,e2=10,e3=2,e4=5):
 
-    global num_people,speed,infected,r0,social_distance
+    global num_people,speed,r0,social_distance
 
     num_people = e1
     r0 = e2
     speed = e3
-
     social_distance = e4
 
     main()
